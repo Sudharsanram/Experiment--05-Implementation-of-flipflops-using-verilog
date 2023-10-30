@@ -102,25 +102,108 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
+1.Open Quartus II and select new project and choose the file location.
+
+2.Module Declaration. Module should have the file name.
+
+3.Declare Inputs and outputs.
+
+4.Use assign declaration and wire to define the functionality of logic circuits.
+
+5.End the program with endmodule. 6.Run the program and choose RTL viewer to get RTL realization.
 
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: SUDHARSAN RAM M 
+RegisterNumber: 212222110048
 */
 
 
+## SR flip flop:
 
+```
+module flipflop(S,R,Q,Qbar,CLK);
+input S,R,CLK;
+output reg Q,Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge CLK)
+begin 
+Q = S|(Q&(~R));
+Qbar=R|(Qbar&(~S));
+end 
+endmodule  
+```
+## JK flip flop ;
 
+```
+input j,k,clk;
+output reg q;
+output reg qbar;
+initial q=0;
+initial qbar=1;
+always @(posedge clk)
+begin
+q=(j&(~q))|((~k)&q);
+qbar=((~j)&qbar)|(k &(~qbar));
+end 
+endmodule
+```
+## T flip flop:
+
+```
+module T(T,clk,Q,Qbar);
+input T,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(T&(~Q))|((~T)&Q);
+Qbar=((~T)&Qbar)|(T&(~Qbar));
+end
+endmodule
+```
+## D flip flop:
+
+```
+module D(D,clk,Q,Qbar);
+input D,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=D;
+Qbar=~D;
+end
+endmodule
+
+```
 
 
 ### RTL LOGIC FOR FLIPFLOPS 
 
+## D flip flop:
 
+![270274090-3049fc6f-6c68-48dc-8c0f-7ba7a5f08366](https://github.com/Sudharsanram/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119393980/257256f6-db74-4a55-80da-6c8b10a66077)
+
+## JK flip flop:
+
+![270273823-6291bd28-92a8-443c-bd89-64e17ac94d73](https://github.com/Sudharsanram/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119393980/71e7da67-fa66-47a5-9c3e-0f5cc2441f0e)
+
+## SR flip flop:
+
+![270273742-149bf87f-84ff-4081-911a-39ca588b0f8d](https://github.com/Sudharsanram/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119393980/56164c8e-ebb6-4042-bf60-b6b30827c382)
+
+## T flip flop:
+
+![270273952-dbb022e1-2712-436c-adb5-813eef725e03](https://github.com/Sudharsanram/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119393980/d87ef14b-2359-4675-bde9-6fd0ef973270)
 
 
 
@@ -130,11 +213,25 @@ RegisterNumber:
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
 
+## D flip flop:
+
+![270274471-686a591f-8be0-4389-8930-4668b366c6dd](https://github.com/Sudharsanram/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119393980/bdcdc940-bdce-4637-835d-3561d0b51219)
+
+## JK flip flop:
+
+![270274265-a88eff91-78a8-4a64-9736-5b1810c7e69a](https://github.com/Sudharsanram/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119393980/0df74b76-1c56-4020-8502-5178a63922a4)
+
+## SR flip flop:
+
+![270274174-af2d77fc-2a5d-4fe7-9d70-0191039dabd8](https://github.com/Sudharsanram/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119393980/4595eea0-9879-451c-8160-74d2f4bec5c1)
+
+## T flip flop:
+
+![270274364-42adaa37-60c5-4f0b-9fc7-6abf84cf643b](https://github.com/Sudharsanram/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119393980/b7054db0-8ef8-4ab3-bfa3-f82c53d97c3f)
 
 
 
 
+### RESULTS:
 
-
-
-### RESULTS 
+Successfully implemented all the flipflops using verilog and validating their functionality using their functional tables.
